@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon ecole{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>La listes des eleves</h1>
+    {% for message in app.flashes('success')%}
+    <div class="alert alert-success">
+    {{message }}
+    </div>
+            
+    {% endfor %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Image</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for eleve in eleves %}
+            <tr>
+                <td>{{ eleve.id }}</td>
+                <td><img src="{{ asset('/image/'~ eleve.image ) }}" style="width: 50px;height: 50px"></td>
+                
+                <td>
+                    <a href="{{ path('eleve_show', {'id': eleve.id}) }}">Voir Ma fiche</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+<a href="{{ path('eleve_new') }}">Create new</a>
+    </div>
+{% endblock %}

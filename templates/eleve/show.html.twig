@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Eleve{% endblock %}
+
+{% block body %}
+    <h1>Une fiche  <a type="button" class="btn btn-primary" href="{{ path('eleve_index') }}">retour sur la liste</a></h1>
+    <div class="container">
+     <h2>Nom : {{eleve.nom}}</h2>
+      <h2>Prenom : {{eleve.prenom}}</h2>
+</div>
+<div class="container">
+    <img src="{{ asset('/image/'~ eleve.image ) }}" class="img-fluid" alt="Responsive image">
+</div>
+</div class="container">
+   
+  </div>
+{% endblock %}
